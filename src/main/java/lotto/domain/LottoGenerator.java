@@ -20,6 +20,6 @@ public class LottoGenerator {
                     Constant.END_NUMBER.getValue(), Constant.REQUIRED_NUMBER_COUNT.getValue()));
             lottoTicket.add(lotto);
         }
-        return lottoTicket;
+        return List.copyOf(lottoTicket);
     }
 }

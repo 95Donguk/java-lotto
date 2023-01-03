@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -13,7 +14,7 @@ public class LottoRating {
     private Map<String, Integer> winningCountRepository = new HashMap<>();
 
     public LottoRating(List<Lotto> lottoTicket, WinningLotto winningLotto) {
-        this.lottoBunch = lottoTicket;
+        this.lottoBunch = new ArrayList<>(lottoTicket);
         this.winningLotto = winningLotto;
     }
 
@@ -24,7 +25,7 @@ public class LottoRating {
                 saveWinningCount(matchingCount, lotto);
             }
         }
-        return winningCountRepository;
+        return Map.copyOf(winningCountRepository);
     }
 
     public int compareLotto(Lotto lotto) {
@@ -61,6 +62,6 @@ public class LottoRating {
     }
 
     public Map<String, Integer> getWinningCountRepository() {
-        return winningCountRepository;
+        return Map.copyOf(winningCountRepository);
     }
 }

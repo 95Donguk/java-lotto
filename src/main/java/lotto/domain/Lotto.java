@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import lotto.resource.Constant;
@@ -9,6 +10,7 @@ public class Lotto {
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
+        numbers = new ArrayList<>(numbers);
         validate(numbers);
         this.numbers = numbers;
     }
@@ -25,6 +27,6 @@ public class Lotto {
     }
 
     public List<Integer> getNumbers() {
-        return numbers;
+        return List.copyOf(numbers);
     }
 }
